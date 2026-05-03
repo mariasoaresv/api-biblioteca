@@ -1,10 +1,14 @@
 package com.mariaf.cadastro_biblioteca.controller;
 
 
+import com.mariaf.cadastro_biblioteca.infraestructure.entitys.Autor;
 import com.mariaf.cadastro_biblioteca.infraestructure.entitys.Categoria;
 import com.mariaf.cadastro_biblioteca.service.CategoriaService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping ("/categoria")
@@ -19,7 +23,12 @@ public class CategoriaController {
     @PostMapping
     public ResponseEntity<Void> salvarCategoria(@RequestBody Categoria categoria){
         categoriaService.salvarCategoria(categoria);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Categoria>> buscarTodosCategoria() {
+        return ResponseEntity.ok(categoriaService.buscarTodosCategoria());
     }
 
     @GetMapping("/{id}") //Buscar Por ID
@@ -27,19 +36,19 @@ public class CategoriaController {
         return ResponseEntity.ok(categoriaService.buscarCategoriaPorId(id));
     }
 
-    @GetMapping //Buscar Por nome
+    @GetMapping("/nome") //Buscar Por nome
     public ResponseEntity<Categoria> buscarCategoriaPorNome(@RequestParam String nome){
         return ResponseEntity.ok(categoriaService.buscarCategoriaPorNomeIgnoreCase(nome));
     }
 
-    @DeleteMapping
-    public ResponseEntity<Categoria> deletarCategoriaPorId(@RequestParam Integer id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Categoria> deletarCategoriaPorId(@PathVariable Integer id){
         categoriaService.deletarCategoriaPorId(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
-    @PutMapping
-    public ResponseEntity<Categoria> atualizarCategoriaPorID(@RequestParam Integer id, @RequestBody Categoria categoria){
+    @PutMapping("/{id}")
+    public ResponseEntity<Categoria> atualizarCategoriaPorID(@PathVariable Integer id, @RequestBody Categoria categoria){
         categoriaService.atualizarCategoriaPorId(id, categoria);
         return ResponseEntity.ok().build();
     }

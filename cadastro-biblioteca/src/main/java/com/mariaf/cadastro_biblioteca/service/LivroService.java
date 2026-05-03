@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class LivroService {
 
@@ -28,6 +30,10 @@ public class LivroService {
             throw new RuntimeException("Esta categoria ainda não foi cadastrada no sistema!");
         }
         livroRepository.saveAndFlush(livro);
+    }
+
+    public List<Livro> buscarTodosLivro() {
+        return livroRepository.findAll();
     }
 
     //Get livro por ID
@@ -53,6 +59,7 @@ public class LivroService {
     //Delete livro por id (id garante precisão por ser único)
     @Transactional
     public void deletarLivroPorId(Integer id){
+        buscarLivroPorId(id);
         livroRepository.deleteById(id);
     }
 

@@ -1,9 +1,12 @@
 package com.mariaf.cadastro_biblioteca.service;
 
+import com.mariaf.cadastro_biblioteca.infraestructure.entitys.Autor;
 import com.mariaf.cadastro_biblioteca.infraestructure.entitys.Categoria;
 import com.mariaf.cadastro_biblioteca.infraestructure.repository.CategoriaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class CategoriaService {
@@ -17,6 +20,10 @@ public class CategoriaService {
     //Post Categoria
     public void salvarCategoria(Categoria categoria) {
         repository.saveAndFlush(categoria);
+    }
+
+    public List<Categoria> buscarTodosCategoria() {
+        return repository.findAll();
     }
 
     //Get categoria por ID
@@ -36,6 +43,7 @@ public class CategoriaService {
     //Delete categoria por id
     @Transactional
     public void deletarCategoriaPorId(Integer id){
+        buscarCategoriaPorId(id);
         repository.deleteById(id);
     }
 

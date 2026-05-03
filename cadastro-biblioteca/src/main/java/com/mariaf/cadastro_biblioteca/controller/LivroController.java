@@ -1,9 +1,13 @@
 package com.mariaf.cadastro_biblioteca.controller;
 
+import com.mariaf.cadastro_biblioteca.infraestructure.entitys.Categoria;
 import com.mariaf.cadastro_biblioteca.infraestructure.entitys.Livro;
 import com.mariaf.cadastro_biblioteca.service.LivroService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/livro")
@@ -19,7 +23,12 @@ public class LivroController {
     @PostMapping
     public ResponseEntity<Void> salvarLivro(@RequestBody Livro livro){
         livroService.salvarLivro(livro);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Livro>> buscarTodosLivro() {
+        return ResponseEntity.ok(livroService.buscarTodosLivro());
     }
 
     @GetMapping("/{id}") //Buscar Por ID
@@ -37,14 +46,14 @@ public class LivroController {
         return ResponseEntity.ok(livroService.buscarLivroPorAutorNomeIgnoreCase(nome));
     }
 
-    @DeleteMapping
-    public ResponseEntity<Livro> deletarLivroPorId(@RequestParam Integer id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Livro> deletarLivroPorId(@PathVariable Integer id){
         livroService.deletarLivroPorId(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
-    @PutMapping
-    public ResponseEntity<Livro> atualizarUsuarioPorID(@RequestParam Integer id, @RequestBody Livro livro){
+    @PutMapping("/{id}")
+    public ResponseEntity<Livro> atualizarUsuarioPorID(@PathVariable Integer id, @RequestBody Livro livro){
         livroService.atualizarLivroPorID(id, livro);
         return ResponseEntity.ok().build();
     }

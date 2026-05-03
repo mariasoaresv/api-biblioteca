@@ -3,8 +3,11 @@ package com.mariaf.cadastro_biblioteca.controller;
 
 import com.mariaf.cadastro_biblioteca.infraestructure.entitys.Autor;
 import com.mariaf.cadastro_biblioteca.service.AutorService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/autor")
@@ -20,7 +23,12 @@ public class AutorController {
     @PostMapping
     public ResponseEntity<Void> salvarAutor(@RequestBody Autor autor){
         autorService.salvarAutor(autor);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Autor>> buscarTodosAutor() {
+        return ResponseEntity.ok(autorService.buscarTodosAutor());
     }
 
     @GetMapping("/{id}")//Buscar Por ID
@@ -28,19 +36,19 @@ public class AutorController {
         return ResponseEntity.ok(autorService.buscarAutorPorId(id));
     }
 
-    @GetMapping //Buscar Por nome
+    @GetMapping("/nome")//Buscar Por nome
     public ResponseEntity<Autor> buscarAutorPorNome(@RequestParam String nome){
         return ResponseEntity.ok(autorService.buscarAutorPorNomeIgnoreCase(nome));
     }
 
-    @DeleteMapping
-    public ResponseEntity<Autor> deletarAutorPorId(@RequestParam Integer id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Autor> deletarAutorPorId(@PathVariable Integer id){
         autorService.deletarAutorPorId(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
-    @PutMapping
-    public ResponseEntity<Autor> atualizarUsuarioPorID(@RequestParam Integer id, @RequestBody Autor autor){
+    @PutMapping("/{id}")
+    public ResponseEntity<Autor> atualizarUsuarioPorID(@PathVariable Integer id, @RequestBody Autor autor){
         autorService.atualizarAutorPorID(id, autor);
         return ResponseEntity.ok().build();
     }

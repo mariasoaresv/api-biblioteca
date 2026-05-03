@@ -6,6 +6,8 @@ import com.mariaf.cadastro_biblioteca.infraestructure.repository.AutorRepository
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class AutorService {
 
@@ -18,6 +20,10 @@ public class AutorService {
     //Post Autor
     public void salvarAutor(Autor autor) {
         repository.saveAndFlush(autor);
+    }
+
+    public List<Autor> buscarTodosAutor() {
+        return repository.findAll();
     }
 
     //Get autor por ID
@@ -37,7 +43,8 @@ public class AutorService {
     //Delete autor por id (id garante precisão por ser único)
     @Transactional
     public void deletarAutorPorId(Integer id){
-        repository.deleteById(id);
+            buscarAutorPorId(id);
+            repository.deleteById(id);
     }
 
     //Put
