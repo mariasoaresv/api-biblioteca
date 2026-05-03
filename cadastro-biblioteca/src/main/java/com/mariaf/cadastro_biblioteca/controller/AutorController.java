@@ -3,6 +3,7 @@ package com.mariaf.cadastro_biblioteca.controller;
 
 import com.mariaf.cadastro_biblioteca.infraestructure.entitys.Autor;
 import com.mariaf.cadastro_biblioteca.service.AutorService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class AutorController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> salvarAutor(@RequestBody Autor autor){
+    public ResponseEntity<Void> salvarAutor(@Valid @RequestBody Autor autor){
         autorService.salvarAutor(autor);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

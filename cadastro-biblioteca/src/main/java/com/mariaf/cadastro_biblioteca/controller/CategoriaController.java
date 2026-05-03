@@ -4,6 +4,7 @@ package com.mariaf.cadastro_biblioteca.controller;
 import com.mariaf.cadastro_biblioteca.infraestructure.entitys.Autor;
 import com.mariaf.cadastro_biblioteca.infraestructure.entitys.Categoria;
 import com.mariaf.cadastro_biblioteca.service.CategoriaService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class CategoriaController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> salvarCategoria(@RequestBody Categoria categoria){
+    public ResponseEntity<Void> salvarCategoria(@Valid @RequestBody Categoria categoria){
         categoriaService.salvarCategoria(categoria);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

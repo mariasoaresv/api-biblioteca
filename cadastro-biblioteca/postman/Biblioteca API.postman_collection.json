@@ -1,0 +1,1125 @@
+{
+  "info": {
+    "_postman_id": "ddee9b98-72c8-4459-9824-8d4906acf114",
+    "name": "Biblioteca API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54418095",
+    "_collection_link": "https://go.postman.co/collection/54418095-ddee9b98-72c8-4459-9824-8d4906acf114?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Requisições Categoria",
+      "item": [
+        {
+          "name": "Busca todas as categorias",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/categoria",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "categoria"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Busca categoria por nome",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/categoria/nome?nome=romance",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "categoria",
+                "nome"
+              ],
+              "query": [
+                {
+                  "key": "nome",
+                  "value": "romance"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Busca categoria por nome (not found)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/categoria/nome?nome=aventura",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "categoria",
+                "nome"
+              ],
+              "query": [
+                {
+                  "key": "nome",
+                  "value": "aventura"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Busca categoria por id",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/categoria/100",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "categoria",
+                "100"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Busca categoria por id (not found)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/categoria/999",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "categoria",
+                "999"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar categoria (created)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nome\": \"Fantasia\",\r\n  \"descricao\": \"Livros do gênero fantasia\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/categoria",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "categoria"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar categoria (bad request)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"descricao\": \"Livros do gênero fantasia\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/categoria",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "categoria"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar categoria",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"descricao\": \"Livros de romance, atualizado.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/categoria/100",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "categoria",
+                "100"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar categoria (not found)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"descricao\": \"Livros de romance, atualizado.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/categoria/999",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "categoria",
+                "999"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar categoria (not found)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Dom Casmurro\",\r\n    \"anoPublicacao\": 1899,\r\n    \"descricao\": \"Obra classica da literatura brasileira\",\r\n    \"capa\": \"https://exemplo.com/dom-casmurro.jpg\",\r\n    \"autor\": {\"id\": 1},\r\n    \"categoria\": {\"id\": 999}\r\n}"
+            },
+            "url": {
+              "raw": "localhost:8080/categoria/999",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "categoria",
+                "999"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar categoria (conflict)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Dom Casmurro\",\r\n    \"anoPublicacao\": 1899,\r\n    \"descricao\": \"Obra classica da literatura brasileira\",\r\n    \"capa\": \"https://exemplo.com/dom-casmurro.jpg\",\r\n    \"autor\": {\"id\": 1},\r\n    \"categoria\": {\"id\": 999}\r\n}"
+            },
+            "url": {
+              "raw": "localhost:8080/categoria/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "categoria",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar categoria",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Dom Casmurro\",\r\n    \"anoPublicacao\": 1899,\r\n    \"descricao\": \"Obra classica da literatura brasileira\",\r\n    \"capa\": \"https://exemplo.com/dom-casmurro.jpg\",\r\n    \"autor\": {\"id\": 1},\r\n    \"categoria\": {\"id\": 999}\r\n}"
+            },
+            "url": {
+              "raw": "localhost:8080/categoria/101",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "categoria",
+                "101"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Requisições Autor",
+      "item": [
+        {
+          "name": "Busca todos os autores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/autor",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "autor"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Busca autor por ID",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/autor/100",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "autor",
+                "100"
+              ]
+            },
+            "description": "Retorna os dados de um autor específico com base no seu ID.\n\n## Parâmetros de URL\n\n| Parâmetro | Tipo | Descrição |\n| --- | --- | --- |\n| Id | Integer | ID único do autor a ser buscado |\n\n## Exemplo de Requisição\n\n```\nGET /autor/100\n\n ```\n\n## Resposta de Sucesso\n\n- **Status:** `200 OK`\n    \n- Retorna um objeto JSON com as informações do autor correspondente ao ID informado.\n    \n\n## Erros Comuns\n\n| Código | Descrição |\n| --- | --- |\n| `404` | Id não encontrado. |"
+          },
+          "response": []
+        },
+        {
+          "name": "Busca autor por id (not found)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/autor/999",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "autor",
+                "999"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Busca Autor por nome",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/autor/nome?nome=clarice lispector",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "autor",
+                "nome"
+              ],
+              "query": [
+                {
+                  "key": "nome",
+                  "value": "clarice lispector"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Busca autor por nome (not found)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/autor/nome?nome=machado de assis",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "autor",
+                "nome"
+              ],
+              "query": [
+                {
+                  "key": "nome",
+                  "value": "machado de assis"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar autor (created)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nome\": \"J. K. Rowling\",\r\n  \"nacionalidade\": \"Britânica\",\r\n  \"dataNascimento\": \"1965-07-31\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/autor",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "autor"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar autor (bad request)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nacionalidade\": \"Brasileiro\",\r\n  \"dataNascimento\": \"1839-06-21\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/autor",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "autor"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar autor",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nacionalidade\": \"Inglaterra\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/autor/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "autor",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar autor (not found)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nacionalidade\": \"Brasileira\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/autor/999",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "autor",
+                "999"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar autor (conflict)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Dom Casmurro\",\r\n    \"anoPublicacao\": 1899,\r\n    \"descricao\": \"Obra classica da literatura brasileira\",\r\n    \"capa\": \"https://exemplo.com/dom-casmurro.jpg\",\r\n    \"autor\": {\"id\": 1},\r\n    \"categoria\": {\"id\": 999}\r\n}"
+            },
+            "url": {
+              "raw": "localhost:8080/autor/100",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "autor",
+                "100"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar autor (not found)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Dom Casmurro\",\r\n    \"anoPublicacao\": 1899,\r\n    \"descricao\": \"Obra classica da literatura brasileira\",\r\n    \"capa\": \"https://exemplo.com/dom-casmurro.jpg\",\r\n    \"autor\": {\"id\": 1},\r\n    \"categoria\": {\"id\": 999}\r\n}"
+            },
+            "url": {
+              "raw": "localhost:8080/autor/999",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "autor",
+                "999"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar autor",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Dom Casmurro\",\r\n    \"anoPublicacao\": 1899,\r\n    \"descricao\": \"Obra classica da literatura brasileira\",\r\n    \"capa\": \"https://exemplo.com/dom-casmurro.jpg\",\r\n    \"autor\": {\"id\": 1},\r\n    \"categoria\": {\"id\": 999}\r\n}"
+            },
+            "url": {
+              "raw": "localhost:8080/autor/101",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "autor",
+                "101"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Requisições Livro",
+      "item": [
+        {
+          "name": "Busca todos os livros",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/livro",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Busca livro pelo titulo",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/livro/titulo?titulo=a hora da estrela",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro",
+                "titulo"
+              ],
+              "query": [
+                {
+                  "key": "titulo",
+                  "value": "a hora da estrela"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Busca livro pelo titulo (not found)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/livro/titulo?titulo=Dom Casmurro",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro",
+                "titulo"
+              ],
+              "query": [
+                {
+                  "key": "titulo",
+                  "value": "Dom Casmurro"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Busca livro pelo autor",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/livro/autor?nome=clarice lispector",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro",
+                "autor"
+              ],
+              "query": [
+                {
+                  "key": "nome",
+                  "value": "clarice lispector"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Busca livro pelo autor (not found)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/livro/autor?nome=machado de assis",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro",
+                "autor"
+              ],
+              "query": [
+                {
+                  "key": "nome",
+                  "value": "machado de assis"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Busca livro pelo id",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/livro/100",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro",
+                "100"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Busca livro pelo id (not found)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/livro/999",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro",
+                "999"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar livro (created)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"titulo\": \"Harry Potter e a Pedra Filosofal\",\r\n  \"anoPublicacao\": 1997,\r\n  \"descricao\": \"O primeiro dos sete livros da série de fantasia Harry Potter\",\r\n  \"capa\": \"https://rocco.com.br/wp-content/uploads/2024/04/9786555324013.jpg\",\r\n  \"autor\": {\"id\" : 1},\r\n  \"categoria\": {\"id\" : 1}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/livro",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar livro (bad request titulo)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"anoPublicacao\": 1899,\r\n    \"descricao\": \"Obra classica da literatura brasileira\",\r\n    \"capa\": \"https://exemplo.com/dom-casmurro.jpg\",\r\n    \"autor\": {\"id\": 1},\r\n    \"categoria\": {\"id\": 1}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/livro",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar livro (bad request categoria)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Dom Casmurro\",\r\n    \"anoPublicacao\": 1899,\r\n    \"descricao\": \"Obra classica da literatura brasileira\",\r\n    \"capa\": \"https://exemplo.com/dom-casmurro.jpg\",\r\n    \"autor\": {\"id\": 1}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/livro",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar livro (bad request autor)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Dom Casmurro\",\r\n    \"anoPublicacao\": 1899,\r\n    \"descricao\": \"Obra classica da literatura brasileira\",\r\n    \"capa\": \"https://exemplo.com/dom-casmurro.jpg\",\r\n    \"categoria\": {\"id\": 1}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/livro",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar livro (not found autor)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Dom Casmurro\",\r\n    \"anoPublicacao\": 1899,\r\n    \"descricao\": \"Obra classica da literatura brasileira\",\r\n    \"capa\": \"https://exemplo.com/dom-casmurro.jpg\",\r\n    \"autor\": {\"id\": 999},\r\n    \"categoria\": {\"id\": 1}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/livro",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar livro (not found categoria)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Dom Casmurro\",\r\n    \"anoPublicacao\": 1899,\r\n    \"descricao\": \"Obra classica da literatura brasileira\",\r\n    \"capa\": \"https://exemplo.com/dom-casmurro.jpg\",\r\n    \"autor\": {\"id\": 1},\r\n    \"categoria\": {\"id\": 999}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/livro",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar livro",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"titulo\": \"Hora da Estrela\",\r\n  \"anoPublicacao\" : 1978\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/livro/100",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro",
+                "100"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar livro (not found)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"titulo\": \"Hora da Estrela\",\r\n  \"anoPublicacao\" : 1978\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/livro/1999",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro",
+                "1999"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar livro",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Dom Casmurro\",\r\n    \"anoPublicacao\": 1899,\r\n    \"descricao\": \"Obra classica da literatura brasileira\",\r\n    \"capa\": \"https://exemplo.com/dom-casmurro.jpg\",\r\n    \"autor\": {\"id\": 1},\r\n    \"categoria\": {\"id\": 999}\r\n}"
+            },
+            "url": {
+              "raw": "localhost:8080/livro/100",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro",
+                "100"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar livro (not found)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Dom Casmurro\",\r\n    \"anoPublicacao\": 1899,\r\n    \"descricao\": \"Obra classica da literatura brasileira\",\r\n    \"capa\": \"https://exemplo.com/dom-casmurro.jpg\",\r\n    \"autor\": {\"id\": 1},\r\n    \"categoria\": {\"id\": 999}\r\n}"
+            },
+            "url": {
+              "raw": "localhost:8080/livro/999",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livro",
+                "999"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

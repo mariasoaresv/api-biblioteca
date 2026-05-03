@@ -3,6 +3,7 @@ package com.mariaf.cadastro_biblioteca.controller;
 import com.mariaf.cadastro_biblioteca.infraestructure.entitys.Categoria;
 import com.mariaf.cadastro_biblioteca.infraestructure.entitys.Livro;
 import com.mariaf.cadastro_biblioteca.service.LivroService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class LivroController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> salvarLivro(@RequestBody Livro livro){
+    public ResponseEntity<Void> salvarLivro(@Valid @RequestBody Livro livro){
         livroService.salvarLivro(livro);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

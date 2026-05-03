@@ -1,4 +1,5 @@
 INSERT INTO autor (id, nome, nacionalidade, data_nascimento) VALUES (100, 'Clarice Lispector', 'Brasileira', '1920-12-10');
+INSERT INTO autor (id, nome, nacionalidade, data_nascimento) VALUES (101, 'Monteiro Lobato', 'Brasileiro', '1982-04-18');
 
 INSERT INTO categoria (id, nome, descricao) VALUES (100, 'Romance', 'Livros do Gênero Romance');
 INSERT INTO categoria (id, nome, descricao) VALUES (101, 'Terror', 'Livros do Gênero Terror');
